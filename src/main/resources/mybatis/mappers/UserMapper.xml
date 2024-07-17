@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.UserMapper">
+    <select id="auth" parameterType="userDTO" resultType="userDTO">
+        SELECT * FROM user
+        WHERE username = #{username} AND
+        password=#{password}
+    </select>
+
+    <select id="selectByUsername" parameterType="string" resultType="userDTO">
+        SELECT * FROM user
+        WHERE username=#{username}
+    </select>
+
+    <select id="selectByNickname" parameterType="string" resultType="userDTO">
+        SELECT * FROM user
+        WHERE nickname=#{nickname}
+    </select>
+
+    <select id="selectOne" resultType="UserDTO" parameterType="string">
+        SELECT * FROM user
+        WHERE username=#{username}
+    </select>
+
+
+    <insert id="register" parameterType="userDTO">
+        INSERT INTO user(username,password,nickname,user_grade,grade_name)
+        VALUES(#{username},#{password},#{nickname},#{userGrade},#{gradeName})
+    </insert>
+
+    <select id="selectAll" resultType="userDTO" parameterType="hashmap">
+        SELECT * FROM user
+    </select>
+
+    <select id="selectMaxRow" resultType="int">
+        SELECT COUNT(*) FROM user
+    </select>
+</mapper>

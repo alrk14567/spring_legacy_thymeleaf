@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="header(user)">
+    <div id="row-header" >
+        <!--<img th:src="@{/images/여행.jpg}" height="40px" alt="">-->
+        <span th:text="|${user.nickname}회원님 환영합니다.|"></span>
+        <a th:href="@{/board/showAll}" th:text="'글 목록'" style="color: palegreen"></a>
+        <a th:href="@{/user/logOut}" th:text="'로그아웃'"></a>
+    </div>
+</div>
+<div th:fragment="footer">
+    <div class="row"
+         style="height: 100px; background-color: lightsteelblue; text-align: center; font-size: x-large; color: palegreen">
+        <span>kidon이 만듬</span>
+    </div>
+</div>
+</body>
+</html>
